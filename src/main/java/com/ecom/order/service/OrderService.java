@@ -1,10 +1,10 @@
 package com.ecom.order.service;
 
 
-import com.ecom.order.model.Order;
-import com.ecom.order.model.OrderDetails;
-import com.ecom.order.model.OrderStatus;
-import com.ecom.order.model.ShoppingCart;
+import com.ecom.order.entities.Order;
+import com.ecom.order.entities.OrderDetails;
+import com.ecom.order.entities.OrderStatus;
+import com.ecom.order.entities.ShoppingCart;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

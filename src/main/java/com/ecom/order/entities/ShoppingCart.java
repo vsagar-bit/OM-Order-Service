@@ -1,4 +1,4 @@
-package com.ecom.order.model;
+package com.ecom.order.entities;
 
 import org.springframework.data.annotation.Id;
 

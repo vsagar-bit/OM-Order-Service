@@ -1,10 +1,10 @@
 package com.ecom.order.controller;
 
 
-import com.ecom.order.model.Order;
-import com.ecom.order.model.OrderDetails;
-import com.ecom.order.model.OrderStatus;
-import com.ecom.order.model.ShoppingCart;
+import com.ecom.order.entities.Order;
+import com.ecom.order.entities.OrderDetails;
+import com.ecom.order.entities.OrderStatus;
+import com.ecom.order.entities.ShoppingCart;
 import com.ecom.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,17 +45,12 @@ public class OrderController {
       return orderService.getOrderStatus(orderId);
     }
 
-    @GetMapping("/order/{orderId}")
-    @ResponseStatus(HttpStatus.OK)
-    public Mono<Order> getOrder(@PathVariable("orderId") long orderId) {
-        return orderService.getOrder(orderId);
-    }
-
     @GetMapping("/orderdetails/{orderId}")
     @ResponseStatus(HttpStatus.CREATED.OK)
     public Flux<OrderDetails> getOrderDetails(@PathVariable("orderId") long orderId) {
         return orderService.getOrderDetails(orderId);
     }
+
 
 
 }

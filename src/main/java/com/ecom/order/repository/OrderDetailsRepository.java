@@ -1,7 +1,7 @@
 package com.ecom.order.repository;
 
 
-import com.ecom.order.model.OrderDetails;
+import com.ecom.order.entities.OrderDetails;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 

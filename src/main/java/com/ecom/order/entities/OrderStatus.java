@@ -1,4 +1,4 @@
-package com.ecom.order.model;
+package com.ecom.order.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,6 +12,7 @@ public class OrderStatus {
     private String name;
     private String description;
     private boolean active;
+    private String orderStatus;
 
 
     public long getId() {
@@ -54,6 +55,14 @@ public class OrderStatus {
         this.orderId = orderId;
     }
 
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
     @Override
     public String toString() {
         return "OrderStatus{" +
@@ -62,6 +71,7 @@ public class OrderStatus {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", active=" + active +
+                ", orderStatus='" + orderStatus + '\'' +
                 '}';
     }
 }
