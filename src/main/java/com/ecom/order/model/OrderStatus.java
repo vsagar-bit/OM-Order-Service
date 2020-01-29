@@ -8,6 +8,7 @@ public class OrderStatus {
 
     @Id
     private long id;
+    private long orderId;
     private String name;
     private String description;
     private boolean active;
@@ -45,10 +46,19 @@ public class OrderStatus {
         this.active = active;
     }
 
+    public long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
+
     @Override
     public String toString() {
         return "OrderStatus{" +
                 "id=" + id +
+                ", orderId=" + orderId +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", active=" + active +
