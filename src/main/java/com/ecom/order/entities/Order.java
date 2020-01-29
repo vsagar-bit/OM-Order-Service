@@ -18,6 +18,7 @@ public class Order {
 	private Long taxAmount;
 	private Long netAmount;
 	private Date shippingDate;
+	private Long shippingAddressId;
 	
 	public Long getOrderId() {
 		return orderId;
@@ -73,6 +74,12 @@ public class Order {
 	public void setShippingDate(Date shippingDate) {
 		this.shippingDate = shippingDate;
 	}
-	
-	
+
+	public Long getShippingAddressId() {
+		return shippingAddressId;
+	}
+
+	public void setShippingAddressId(Long shippingAddressId) {
+		this.shippingAddressId = shippingAddressId;
+	}
 }

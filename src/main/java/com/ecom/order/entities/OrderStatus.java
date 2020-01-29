@@ -7,20 +7,28 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class OrderStatus {
 
     @Id
-    private long id;
-    private long orderId;
+    private Long id;
+    private Long orderId;
     private String name;
     private String description;
-    private boolean active;
+    private Boolean active;
     private String orderStatus;
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public String getName() {
@@ -39,20 +47,12 @@ public class OrderStatus {
         this.description = description;
     }
 
-    public boolean isActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
-    }
-
-    public long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(long orderId) {
-        this.orderId = orderId;
     }
 
     public String getOrderStatus() {
@@ -61,17 +61,5 @@ public class OrderStatus {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderStatus{" +
-                "id=" + id +
-                ", orderId=" + orderId +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", active=" + active +
-                ", orderStatus='" + orderStatus + '\'' +
-                '}';
     }
 }

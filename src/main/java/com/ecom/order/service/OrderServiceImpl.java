@@ -3,11 +3,9 @@ package com.ecom.order.service;
 import com.ecom.order.entities.Order;
 import com.ecom.order.entities.OrderDetails;
 import com.ecom.order.entities.OrderStatus;
-import com.ecom.order.entities.ShoppingCart;
 import com.ecom.order.repository.OrderDetailsRepository;
 import com.ecom.order.repository.OrderRepository;
 import com.ecom.order.repository.OrderStatusRepository;
-import com.ecom.order.repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -26,10 +24,6 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private OrderDetailsRepository orderDetailsRepository;
 
-
-    @Autowired
-    private ShoppingCartRepository shoppingCartRepository;
-
     @Autowired
     private OrderStatusRepository orderStatusRepository;
 
@@ -42,11 +36,6 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Mono<OrderDetails> createOrderDetails(OrderDetails orderDetails) {
         return orderDetailsRepository.save(orderDetails);
-    }
-
-    @Override
-    public Mono<ShoppingCart> addProductToShippingCart(ShoppingCart shoppingCart) {
-        return shoppingCartRepository.save(shoppingCart);
     }
 
     @Override
