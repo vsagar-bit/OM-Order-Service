@@ -8,62 +8,101 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class OrderDetails {
 
     @Id
-    private long orderId;
-    private long productId;
-    private long productPrice;
-    private int quantity;
-    private int discount;
-    private boolean active;
+    private Long id;
+	private Long orderId;
+    private Long productId;
+    private Long productPrice;
+    private Long quantity;
+    private Long discount;
+    private Boolean active;
+    
+    
+    
+    public Long getId() {
+		return id;
+	}
 
-    public long getOrderId() {
-        return orderId;
-    }
 
-    public void setOrderId(long orderId) {
-        this.orderId = orderId;
-    }
 
-    public long getProductId() {
-        return productId;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
 
-    public long getProductPrice() {
-        return productPrice;
-    }
 
-    public void setProductPrice(long productPrice) {
-        this.productPrice = productPrice;
-    }
+	public Long getOrderId() {
+		return orderId;
+	}
 
-    public int getQuantity() {
-        return quantity;
-    }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
-    public int getDiscount() {
-        return discount;
-    }
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
 
-    public void setDiscount(int discount) {
-        this.discount = discount;
-    }
 
-    public boolean isActive() {
-        return active;
-    }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
+	public Long getProductId() {
+		return productId;
+	}
 
-    @Override
+
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+
+
+	public Long getProductPrice() {
+		return productPrice;
+	}
+
+
+
+	public void setProductPrice(Long productPrice) {
+		this.productPrice = productPrice;
+	}
+
+
+
+	public Long getQuantity() {
+		return quantity;
+	}
+
+
+
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
+	}
+
+
+
+	public Long getDiscount() {
+		return discount;
+	}
+
+
+
+	public void setDiscount(Long discount) {
+		this.discount = discount;
+	}
+
+
+
+	public Boolean getActive() {
+		return active;
+	}
+
+
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+
+
+	@Override
     public String toString() {
         return "OrderDetails{" +
                 "orderId=" + orderId +
