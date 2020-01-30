@@ -1,12 +1,15 @@
 package com.ecom.order.utilities;
 
+import org.springframework.beans.BeanUtils;
+
+import com.ecom.order.dto.CheckoutDetailsDTO;
 import com.ecom.order.dto.OrderDTO;
 import com.ecom.order.dto.OrderDetailsDTO;
 import com.ecom.order.dto.OrderStatusDTO;
+import com.ecom.order.dto.ProductDetailsDTO;
 import com.ecom.order.entities.Order;
 import com.ecom.order.entities.OrderDetails;
 import com.ecom.order.entities.OrderStatus;
-import org.springframework.beans.BeanUtils;
 
 public class ConvertionUtiltiy {
 
@@ -40,4 +43,17 @@ public class ConvertionUtiltiy {
         BeanUtils.copyProperties(orderStatus,orderStatusDTO);
         return orderStatusDTO;
     }
+    
+    public static Order getOrderFromCheckoutDetails(CheckoutDetailsDTO dto) {
+		Order order = new Order();
+		BeanUtils.copyProperties(dto, order);
+		return order;
+	}
+	
+	public static OrderDetails getOrderDetailsFromProductDetails(ProductDetailsDTO dto) {
+		
+		OrderDetails od = new OrderDetails();
+		BeanUtils.copyProperties(dto, od);
+		return od;
+	}
 }
