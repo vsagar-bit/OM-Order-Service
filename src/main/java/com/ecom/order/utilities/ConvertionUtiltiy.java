@@ -1,12 +1,13 @@
 package com.ecom.order.utilities;
 
+import org.springframework.beans.BeanUtils;
+
 import com.ecom.order.dto.OrderDTO;
 import com.ecom.order.dto.OrderDetailsDTO;
 import com.ecom.order.dto.OrderStatusDTO;
 import com.ecom.order.entities.Order;
 import com.ecom.order.entities.OrderDetails;
 import com.ecom.order.entities.OrderStatus;
-import org.springframework.beans.BeanUtils;
 
 public class ConvertionUtiltiy {
 
