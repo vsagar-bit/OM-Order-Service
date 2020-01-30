@@ -19,6 +19,7 @@ public class Order {
 	private Long netAmount;
 	private Date shippingDate;
 	private Long shippingAddressId;
+
 	
 	public Long getOrderId() {
 		return orderId;

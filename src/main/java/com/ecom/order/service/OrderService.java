@@ -1,17 +1,16 @@
 package com.ecom.order.service;
 
-
-import com.ecom.order.entities.Order;
-import com.ecom.order.entities.OrderDetails;
-import com.ecom.order.entities.OrderStatus;
+import com.ecom.order.dto.OrderDTO;
+import com.ecom.order.dto.OrderDetailsDTO;
+import com.ecom.order.dto.OrderStatusDTO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface OrderService {
 
-    Mono<Order> createOrder(Order order);
-    Mono<OrderDetails> createOrderDetails(OrderDetails orderDetails);
-    Mono<OrderStatus> getOrderStatus(long orderId);
-    Mono<Order> getOrder(long orderId);
-    Flux<OrderDetails> getOrderDetails(long orderId);
+    Mono<OrderDTO> createOrder(OrderDTO order);
+    Mono<OrderDetailsDTO> createOrderDetails(OrderDetailsDTO orderDetails);
+    Mono<OrderStatusDTO> getOrderStatus(Long orderId);
+    Mono<OrderDTO> getOrder(Long orderId);
+    Flux<OrderDetailsDTO> getOrderDetails(Long orderId);
 }

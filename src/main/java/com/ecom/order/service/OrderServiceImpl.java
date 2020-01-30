@@ -1,11 +1,14 @@
 package com.ecom.order.service;
 
+import com.ecom.order.dto.OrderDTO;
+import com.ecom.order.dto.OrderDetailsDTO;
+import com.ecom.order.dto.OrderStatusDTO;
 import com.ecom.order.entities.Order;
 import com.ecom.order.entities.OrderDetails;
-import com.ecom.order.entities.OrderStatus;
 import com.ecom.order.repository.OrderDetailsRepository;
 import com.ecom.order.repository.OrderRepository;
 import com.ecom.order.repository.OrderStatusRepository;
+import com.ecom.order.utilities.ConvertionUtiltiy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -29,33 +32,41 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Override
-    public Mono<Order> createOrder(Order order) {
-       return orderRepository.save(order);
-    }
-
-    @Override
-    public Mono<OrderDetails> createOrderDetails(OrderDetails orderDetails) {
-        return orderDetailsRepository.save(orderDetails);
-    }
-
-    @Override
-    public Mono<OrderStatus> getOrderStatus(long orderId) {
-        return orderStatusRepository.findById(orderId);
+    public Mono<OrderDTO> createOrder(OrderDTO orderDTO) {
+        Order order = ConvertionUtiltiy.convertToOrder(orderDTO);
+         return orderRepository.save(order)
+                .map(ord -> ConvertionUtiltiy.convertToOrderDTO(ord));
 
     }
 
     @Override
-    public Mono<Order> getOrder(long orderId) {
-        return orderRepository.findById(orderId);
+    public Mono<OrderDetailsDTO> createOrderDetails(OrderDetailsDTO orderDetailsDTO) {
+        OrderDetails orderDetails = ConvertionUtiltiy.convertToOrderDetails(orderDetailsDTO);
+        return orderDetailsRepository.save(orderDetails)
+                .map(orderDet -> ConvertionUtiltiy.convertToOrderDetailsDTO(orderDet));
     }
 
     @Override
-    public Flux<OrderDetails> getOrderDetails(long orderId) {
+    public Mono<OrderStatusDTO> getOrderStatus(Long orderId) {
+        return orderStatusRepository.findById(orderId)
+                .map(orderStatus -> ConvertionUtiltiy.convertToOrderStatusDTO(orderStatus));
+
+    }
+
+    @Override
+    public Mono<OrderDTO> getOrder(Long orderId) {
+        return orderRepository.findById(orderId)
+                .map(order -> ConvertionUtiltiy.convertToOrderDTO(order));
+    }
+
+    @Override
+    public Flux<OrderDetailsDTO> getOrderDetails(Long orderId) {
         Iterable<Long> iterable = () -> {
             List<Long> list = new ArrayList<>();
             list.add(orderId);
             return list.iterator();
         };
-        return orderDetailsRepository.findAllById(iterable);
+        return orderDetailsRepository.findAllById(iterable)
+                .map(orderDetails -> ConvertionUtiltiy.convertToOrderDetailsDTO(orderDetails));
     }
 }

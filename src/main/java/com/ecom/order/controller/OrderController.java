@@ -1,9 +1,9 @@
 package com.ecom.order.controller;
 
 
-import com.ecom.order.entities.Order;
-import com.ecom.order.entities.OrderDetails;
-import com.ecom.order.entities.OrderStatus;
+import com.ecom.order.dto.OrderDTO;
+import com.ecom.order.dto.OrderDetailsDTO;
+import com.ecom.order.dto.OrderStatusDTO;
 import com.ecom.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,26 +20,26 @@ public class OrderController {
 
     @PostMapping("/order")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Order> createOrder(@RequestBody Order order) {
-        return orderService.createOrder(order);
+    public Mono<OrderDTO> createOrder(@RequestBody OrderDTO orderDTO) {
+        return orderService.createOrder(orderDTO);
     }
 
 
     @PostMapping("/orderdetails")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<OrderDetails> createOrderDetails(@RequestBody OrderDetails orderDetails) {
-        return orderService.createOrderDetails(orderDetails);
+    public Mono<OrderDetailsDTO> createOrderDetails(@RequestBody OrderDetailsDTO orderDetailsDTO) {
+        return orderService.createOrderDetails(orderDetailsDTO);
     }
 
     @GetMapping("/orderStatus/{orderId}")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<OrderStatus> getOrderStatus(@PathVariable("orderId") long orderId) {
+    public Mono<OrderStatusDTO> getOrderStatus(@PathVariable("orderId") Long orderId) {
       return orderService.getOrderStatus(orderId);
     }
 
     @GetMapping("/orderdetails/{orderId}")
     @ResponseStatus(HttpStatus.CREATED.OK)
-    public Flux<OrderDetails> getOrderDetails(@PathVariable("orderId") long orderId) {
+    public Flux<OrderDetailsDTO> getOrderDetails(@PathVariable("orderId") Long orderId) {
         return orderService.getOrderDetails(orderId);
     }
 
