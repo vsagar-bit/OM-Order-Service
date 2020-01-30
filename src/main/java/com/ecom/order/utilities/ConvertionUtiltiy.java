@@ -44,16 +44,4 @@ public class ConvertionUtiltiy {
         return orderStatusDTO;
     }
     
-    public static Order getOrderFromCheckoutDetails(CheckoutDetailsDTO dto) {
-		Order order = new Order();
-		BeanUtils.copyProperties(dto, order);
-		return order;
-	}
-	
-	public static OrderDetails getOrderDetailsFromProductDetails(ProductDetailsDTO dto) {
-		
-		OrderDetails od = new OrderDetails();
-		BeanUtils.copyProperties(dto, od);
-		return od;
-	}
 }
