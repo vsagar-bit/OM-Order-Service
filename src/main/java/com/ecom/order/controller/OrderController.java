@@ -1,6 +1,5 @@
 package com.ecom.order.controller;
 
-
 import com.ecom.order.dto.OrderDTO;
 import com.ecom.order.dto.OrderDetailsDTO;
 import com.ecom.order.dto.OrderStatusDTO;
@@ -17,6 +16,18 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @GetMapping("/listOrders")
+    @ResponseStatus(HttpStatus.OK)
+    public Flux<OrderDTO> getAllOrders(@PathVariable("customerId") Long customerId) {
+        return orderService.getAllOrders(customerId);
+    }
+
+    @PostMapping("/cancelOrder")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Mono<OrderStatusDTO> cancelOrder(@RequestBody OrderStatusDTO orderStatusDTO) {
+     return orderService.cancelOrder(orderStatusDTO);
+    }
 
     @PostMapping("/order")
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,7 +53,4 @@ public class OrderController {
     public Flux<OrderDetailsDTO> getOrderDetails(@PathVariable("orderId") Long orderId) {
         return orderService.getOrderDetails(orderId);
     }
-
-
-
 }

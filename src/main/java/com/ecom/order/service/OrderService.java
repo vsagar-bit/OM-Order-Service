@@ -13,4 +13,6 @@ public interface OrderService {
     Mono<OrderStatusDTO> getOrderStatus(Long orderId);
     Mono<OrderDTO> getOrder(Long orderId);
     Flux<OrderDetailsDTO> getOrderDetails(Long orderId);
+    Flux<OrderDTO> getAllOrders(Long customerId);
+    Mono<OrderStatusDTO> cancelOrder(OrderStatusDTO orderStatusDTO);
 }

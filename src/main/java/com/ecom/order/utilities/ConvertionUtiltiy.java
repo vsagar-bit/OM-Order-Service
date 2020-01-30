@@ -40,4 +40,10 @@ public class ConvertionUtiltiy {
         BeanUtils.copyProperties(orderStatus,orderStatusDTO);
         return orderStatusDTO;
     }
+
+    public static OrderStatus convertToOrderStatus(OrderStatusDTO orderStatusDTO) {
+        OrderStatus orderStatus = new OrderStatus();
+        BeanUtils.copyProperties(orderStatusDTO,orderStatus);
+        return orderStatus;
+    }
 }

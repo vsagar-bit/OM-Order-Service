@@ -5,6 +5,7 @@ import com.ecom.order.dto.OrderDetailsDTO;
 import com.ecom.order.dto.OrderStatusDTO;
 import com.ecom.order.entities.Order;
 import com.ecom.order.entities.OrderDetails;
+import com.ecom.order.entities.OrderStatus;
 import com.ecom.order.repository.OrderDetailsRepository;
 import com.ecom.order.repository.OrderRepository;
 import com.ecom.order.repository.OrderStatusRepository;
@@ -29,7 +30,6 @@ public class OrderServiceImpl implements OrderService{
 
     @Autowired
     private OrderStatusRepository orderStatusRepository;
-
 
     @Override
     public Mono<OrderDTO> createOrder(OrderDTO orderDTO) {
@@ -69,4 +69,23 @@ public class OrderServiceImpl implements OrderService{
         return orderDetailsRepository.findAllById(iterable)
                 .map(orderDetails -> ConvertionUtiltiy.convertToOrderDetailsDTO(orderDetails));
     }
+
+    @Override
+    public Flux<OrderDTO> getAllOrders(Long customerId) {
+              Iterable<Long> iterable = () -> {
+                  List<Long> list = new ArrayList<>();
+                  list.add(customerId);
+                  return list.iterator();
+              };
+              return orderRepository.findAllById(iterable)
+                      .map(order -> ConvertionUtiltiy.convertToOrderDTO(order));
+
+    }
+
+    @Override
+    public Mono<OrderStatusDTO> cancelOrder(OrderStatusDTO orderStatusDTO) {
+        OrderStatus orderStatus = ConvertionUtiltiy.convertToOrderStatus(orderStatusDTO);
+        return orderStatusRepository.save(orderStatus).map(ordStatus -> ConvertionUtiltiy.convertToOrderStatusDTO(ordStatus));
+    }
+
 }
